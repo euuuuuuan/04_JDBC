@@ -1,7 +1,9 @@
 package com.ohgiraffers.section02.template;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import static com.ohgiraffers.section02.template.JDBCTemplate.close;
 import static com.ohgiraffers.section02.template.JDBCTemplate.getConnection;
 
 public class Application {
@@ -12,5 +14,15 @@ public class Application {
 
         // 연결객체 생성여부 확인 (객체의 주소값이 반환되는 것을 확인)
         System.out.println("con = " + con);
+
+        // 커넥션 꺼주기
+//        if (con != null) {
+//            try {
+//                con.close();
+//            } catch (SQLException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+        close(con);
     }
 }

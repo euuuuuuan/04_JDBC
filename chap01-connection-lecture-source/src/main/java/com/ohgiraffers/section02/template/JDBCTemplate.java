@@ -33,7 +33,7 @@ public class JDBCTemplate {
             Class.forName(driver);
 
             // DriverManager를 통해서 Connection 객체 생성
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(url, prop);
 
 
         } catch (SQLException e) {
@@ -51,4 +51,13 @@ public class JDBCTemplate {
     }
 
     // 커넥션을 닫아주는 메소드
+    public static void close(Connection con) {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
