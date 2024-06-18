@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="insertMenu">
+    <entry key="selectEmp">
+        <!-- 벨류 -->
+        select
+        emp_id,
+        emp_name,
+        emp_no,
+        email,
+        phone,
+        dept_code,
+        job_code,
+        sal_level,
+        salary,
+        bonus,
+        manager_id,
+        hire_date,
+        ent_date,
+        ent_yn
+        from
+        employee
+    </entry>
+    <entry key="insertEmp">
         insert into tbl_menu (
         menu_name,
         menu_price,
@@ -11,14 +31,14 @@
         values (?,?,?,?)
     </entry>
 
-    <entry key="updateMenu">
+    <entry key="updateEmp">
         update tbl_menu
         set menu_name = ?,
         menu_price = ?
         where menu_code = ?
     </entry>
 
-    <entry key="deleteMenu">
+    <entry key="deleteEmp">
         delete
         from tbl_menu
         where menu_code = ?
