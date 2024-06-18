@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Properties;
 
+import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
 public class Application1 {
@@ -14,7 +16,7 @@ public class Application1 {
     public static void main(String[] args) {
 
         Connection con = getConnection();
-        System.out.println(con); // con주소 잘받아오는지 확인
+//        System.out.println(con); // con주소 잘받아오는지 확인
 
         PreparedStatement pstmt = null;
 
@@ -29,11 +31,33 @@ public class Application1 {
 
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/mapper/menu-query.xml"));
+            String query = prop.getProperty("insertMenu");
+//        System.out.println("query = " + query);
+            pstmt = con.prepareStatement(query);
+
+            pstmt.setString(1,"봉골레청국장");
+            pstmt.setInt(2, 50000);
+            pstmt.setInt(3, 1);
+            pstmt.setString(4,"Y");
+
+            // insert, update, delete 할때는 excuteUpdate() 사용한다.
+            result = pstmt.executeUpdate();
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(pstmt);
+            close(con);
         }
 
-        String query = prop.getProperty("insertMenu");
-        System.out.println("query = " + query);
+        if (result > 0) {
+            System.out.println("메뉴 저장 성공!!!");
+        } else {
+            System.out.println("메뉴 저장 실패!!!");
+        }
+
     }
 }
