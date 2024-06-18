@@ -1,4 +1,4 @@
-package com.ohgiraffers.section02;
+package com.ohgiraffers.section02.preparedstatement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
