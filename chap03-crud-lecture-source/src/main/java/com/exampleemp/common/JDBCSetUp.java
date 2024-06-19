@@ -12,7 +12,7 @@ public class JDBCSetUp {
         Properties empProp = new Properties();
 
         try {
-            empProp.load(new FileReader("src/main/java/com/exampleemp/config/connection-info-properties"));
+            empProp.load(new FileReader("src/main/java/com/exampleemp/config/connection-info.properties"));
 
             System.out.println("empProp = " + empProp);
 

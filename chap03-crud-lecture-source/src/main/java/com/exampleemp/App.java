@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import static com.exampleemp.common.JDBCSetUp.close;
-import static com.ohgiraffers.common.JDBCTemplate.getConnection;
+import static com.exampleemp.common.JDBCSetUp.getConnection;
 
 public class App {
     public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class App {
 
         try {
 //            stmt = con.createStatement();
-            prop.loadFromXML(new FileInputStream("src/main/java/com/exampleemp/config/connection-info.properties"));
+            prop.loadFromXML(new FileInputStream("src/main/java/com/exampleemp/mapper/emp-query.xml"));
             String querySeq = prop.getProperty("selectEmp");
             System.out.println(querySeq);
 
