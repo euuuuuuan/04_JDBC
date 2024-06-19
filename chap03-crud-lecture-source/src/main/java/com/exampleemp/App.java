@@ -45,6 +45,7 @@ public class App {
                 row.setEmpNo(rset.getString("EMP_NO"));
                 row.setEmail(rset.getString("EMAIL"));
                 row.setPhone(rset.getString("PHONE"));
+                row.setDeptCode(rset.getString("DEPT_CODE"));
                 row.setJobCode(rset.getString("JOB_CODE"));
                 row.setSalLevel(rset.getString("SAL_LEVEL"));
                 row.setSalary(rset.getFloat("SALARY"));
