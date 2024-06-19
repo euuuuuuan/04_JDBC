@@ -31,6 +31,7 @@ public class App {
 //            stmt = con.createStatement();
             prop.loadFromXML(new FileInputStream("src/main/java/com/exampleemp/config/connection-info.properties"));
             String querySeq = prop.getProperty("selectEmp");
+            System.out.println(querySeq);
 
             pstmt = con.prepareStatement(querySeq);
             rset = pstmt.executeQuery();
@@ -42,7 +43,8 @@ public class App {
                 row.setEmpId(rset.getString("EMP_ID"));
                 row.setEmpName(rset.getString("EMP_NAME"));
                 row.setEmpNo(rset.getString("EMP_NO"));
-                row.setEmail(rset.getString("PHONE"));
+                row.setEmail(rset.getString("EMAIL"));
+                row.setPhone(rset.getString("PHONE"));
                 row.setJobCode(rset.getString("JOB_CODE"));
                 row.setSalLevel(rset.getString("SAL_LEVEL"));
                 row.setSalary(rset.getFloat("SALARY"));
@@ -69,13 +71,15 @@ public class App {
             close(con);
 
             // empList가 null이 아닌 경우에만 반복문 실행
+
             if (empList != null) {
                 for (EmployeeDTO emp : empList) {
                     System.out.println(emp);
                 }
             } else {
-                System.out.println("No employees found."); // 예외 발생 시 처리할 메시지 출력
+                System.out.println("No employees found."); // empList가 null인 경우 처리
             }
+
 
         }
     }

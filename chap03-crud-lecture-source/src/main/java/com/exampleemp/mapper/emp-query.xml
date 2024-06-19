@@ -21,26 +21,4 @@
         from
         employee
     </entry>
-    <entry key="insertEmp">
-        insert into tbl_menu (
-        menu_name,
-        menu_price,
-        category_code,
-        orderable_status
-        )
-        values (?,?,?,?)
-    </entry>
-
-    <entry key="updateEmp">
-        update tbl_menu
-        set menu_name = ?,
-        menu_price = ?
-        where menu_code = ?
-    </entry>
-
-    <entry key="deleteEmp">
-        delete
-        from tbl_menu
-        where menu_code = ?
-    </entry>
 </properties>
